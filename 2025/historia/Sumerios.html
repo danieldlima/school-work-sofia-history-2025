@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental - Povo Sumério</title>
+    <style>
+
+        :root {
+            /* Cores principais */
+            --color-1: #667eea;
+            --color-2: #764ba2;
+            --color-3: #e74c3c;
+            --color-4: #f39c12;
+            --color-5: #9b59b6;
+            --color-6: #3498db;
+            --color-7: #27ae60;
+            --color-8: #1abc9c;
+            --color-9: #e67e22;
+            --color-10: #d68910;
+            
+            /* Cores de fundo */
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #c3cfe2;
+            --bg-white: white;
+            
+            /* Cores de texto */
+            --text-primary: var(--color-2);
+            --text-secondary: #2c3e50;
+            --text-light: white;
+            
+            /* Sombras */
+            --shadow-light: rgba(0,0,0,0.1);
+            --shadow-medium: rgba(0,0,0,0.15);
+            --shadow-color: rgba(102, 126, 234, 0.3);
+        }
+
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        /* Menu de navegação */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 60px 0 0 0; /* Adicionado padding-top para o menu */
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            background: var(--bg-white);
+            border-radius: 15px;
+            /* box-shadow: 0 8px 32px var(--shadow-light); */
+            padding: 15px;
+            box-sizing: border-box;
+            margin: 20px;
+            max-width: 95vw;
+            max-height: 95vh;
+            overflow: auto;
+        }
+
+        .posicao-central {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .titulo-principal {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--color-6), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .centro {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+            color: var(--text-light);
+            padding: 20px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            z-index: 10;
+        }
+
+        .centro h2 {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+        
+        .centro p {
+            margin: 5px 0 0 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .ramo {
+            position: absolute;
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 12px 15px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            border-left: 4px solid;
+            max-width: 180px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .ramo header {
+            margin-bottom: 8px;
+        }
+        
+        .ramo h3 {
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .ramo ul {
+            margin: 0;
+            padding-left: 12px;
+        }
+        
+        .ramo li {
+            margin: 3px 0;
+        }
+        
+        /* Posicionamento dos ramos */
+        .origem {
+            top: 15%;
+            left: 12%;
+            border-left-color: var(--color-3);
+            color: var(--color-3);
+        }
+        
+        .patrimonio {
+            top: 15%;
+            right: 12%;
+            border-left-color: var(--color-4);
+            color: var(--color-10);
+        }
+        
+        .economia {
+            top: 42%;
+            left: 2%;
+            transform: translateY(-50%);
+            border-left-color: var(--color-5);
+            color: var(--color-5);
+        }
+        
+        .religiao {
+            bottom: 28%;
+            left: 5%;
+            border-left-color: var(--color-6);
+            color: var(--color-6);
+        }
+        
+        .legado {
+            top: 42%;
+            right: 2%;
+            transform: translateY(-50%);
+            border-left-color: var(--color-7);
+            color: var(--color-7);
+        }
+        
+        .politica {
+            bottom: 28%;
+            right: 5%;
+            border-left-color: var(--color-9);
+            color: var(--color-10);
+        }
+        
+        .sociedade {
+            bottom: 5%;
+            left: 15%;
+            border-left-color: var(--color-8);
+            color: var(--color-8);
+        }
+        
+        /* Linhas conectoras */
+        .linha {
+            position: absolute;
+            background: #bdc3c7;
+            z-index: 1;
+            transform-origin: top center;
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+        }
+        
+        /* Linha para ORIGEM (topo esquerdo) */
+        .linha-1 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(148deg);
+            background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para PATRIMÔNIO (topo direito) */
+        .linha-2 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-148deg);
+            background: linear-gradient(313deg, var(--color-4) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para ECONOMIA (esquerda) */
+        .linha-3 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(98deg);
+            background: linear-gradient(313deg, var(--color-5) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para RELIGIÃO (baixo esquerdo) */
+        .linha-4 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-108deg);
+            background: linear-gradient(
+ 294deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+
+        
+        /* Linha para LEGADO (direita) */
+        .linha-5 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(65deg);
+            background: linear-gradient(313deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para POLÍTICA (baixo direito) */
+        .linha-6 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-60deg);
+            background: linear-gradient(
+ 312deg, var(--color-9) 50%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para SOCIEDADE (baixo esquerdo inferior) */
+        .linha-7 {
+            width: 2px;
+            height: 360px;
+            transform: rotate(25deg);
+            background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Menu de navegação -->
+    <nav class="nav-menu" role="navigation" aria-label="Navegação entre mapas mentais">
+        <a href="Hebreus.html">🏺 Hebreus</a>
+        <a href="Sumerios.html" class="active" aria-current="page">🏛️ Sumérios</a>
+        <a href="Acadios.html">⚔️ Acádios</a>
+        <a href="Babilonios.html">🏺 Babilônios</a>
+        <a href="Assirios.html">🛡️ Assírios</a>
+    </nav>
+
+    <main class="container" role="main" aria-label="Mapa Mental do Povo Sumério">
+        <header>
+            <h1 class="titulo-principal">POVO SUMÉRIO - Mapa Mental</h1>
+        </header>
+
+        <section class="mind-map" aria-label="Estrutura do mapa mental">
+            <!-- Centro do mapa -->
+            <article class="centro" role="banner" aria-label="Tema central">
+                <h2>POVO SUMÉRIO</h2>
+                <p>(Civilização)</p>
+            </article>
+            
+            <!-- Linhas conectoras -->
+            <nav class="conectores posicao-central" aria-label="Conexões do mapa mental">
+                <div class="linha linha-1" aria-hidden="true"></div>
+                <div class="linha linha-2" aria-hidden="true"></div>
+                <div class="linha linha-3" aria-hidden="true"></div>
+                <div class="linha linha-4" aria-hidden="true"></div>
+                <div class="linha linha-5" aria-hidden="true"></div>
+                <div class="linha linha-6" aria-hidden="true"></div>
+                <div class="linha linha-7" aria-hidden="true"></div>
+            </nav>
+            
+            <!-- Ramos do mapa mental -->
+            <section class="ramos" aria-label="Ramos do mapa mental">
+                <article class="ramo origem" role="region" aria-labelledby="origem-titulo">
+                    <header>
+                        <h3 id="origem-titulo">📍 ORIGEM</h3>
+                    </header>
+                    <ul>
+                        <li>Mesopotâmia (atual Iraque)</li>
+                        <li>Entre os rios Tigre e Eufrates</li>
+                        <li>Surgimento por volta de 4000 a.C.</li>
+                        <li>Formação de cidades-estado independentes</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo patrimonio" role="region" aria-labelledby="patrimonio-titulo">
+                    <header>
+                        <h3 id="patrimonio-titulo">🏛️ PATRIMÔNIO</h3>
+                    </header>
+                    <ul>
+                        <li>Primeira forma de escrita: cuneiforme</li>
+                        <li>Zigurates (templos em forma de pirâmide)</li>
+                        <li>Cidades como Ur, Uruk e Lagash</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo economia" role="region" aria-labelledby="economia-titulo">
+                    <header>
+                        <h3 id="economia-titulo">🏢 ECONOMIA</h3>
+                    </header>
+                    <ul>
+                        <li>Agricultura irrigada</li>
+                        <li>Criação de animais</li>
+                        <li>Comércio de grãos, tecidos e artesanato</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo religiao" role="region" aria-labelledby="religiao-titulo">
+                    <header>
+                        <h3 id="religiao-titulo">🙏 RELIGIÃO</h3>
+                    </header>
+                    <ul>
+                        <li><strong>Politeísmo:</strong> Muitos deuses</li>
+                        <li>Deuses ligados à natureza e à cidade</li>
+                        <li>Ex.: Enlil, Enki, Inanna, Utu</li>
+                        <li>Sacerdotes com grande influência política e social</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo legado" role="region" aria-labelledby="legado-titulo">
+                    <header>
+                        <h3 id="legado-titulo">📜 LEGADO</h3>
+                    </header>
+                    <ul>
+                        <li>Primeira escrita organizada da história</li>
+                        <li>Código de Ur-Nammu (primeiro código de leis conhecido)</li>
+                        <li>Invenções: roda, arado, sistema de irrigação</li>
+                        <li>Avanços na matemática e astronomia</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo politica" role="region" aria-labelledby="politica-titulo">
+                    <header>
+                        <h3 id="politica-titulo">⚖️ POLÍTICA</h3>
+                    </header>
+                    <ul>
+                        <li>Cidades-estado governadas por monarcas</li>
+                        <li>Organização teocrática (poder político + religioso)</li>
+                        <li>Disputas e alianças entre cidades</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo sociedade" role="region" aria-labelledby="sociedade-titulo">
+                    <header>
+                        <h3 id="sociedade-titulo">👥 SOCIEDADE</h3>
+                    </header>
+                    <ul>
+                        <li>Estrutura hierárquica: rei → sacerdotes → comerciantes/artesãos → camponeses → escravos</li>
+                        <li>Papel central dos templos na vida econômica e social</li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <!-- Script para controle do menu de navegação -->
+    <script src="menu-toggle.js"></script>
+</body>
+</html>

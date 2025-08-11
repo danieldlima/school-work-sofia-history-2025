@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental - Povo Babilônio</title>
+    <style>
+
+        :root {
+            /* Cores principais */
+            --color-1: #667eea;
+            --color-2: #764ba2;
+            --color-3: #e74c3c;
+            --color-4: #f39c12;
+            --color-5: #9b59b6;
+            --color-6: #3498db;
+            --color-7: #27ae60;
+            --color-8: #1abc9c;
+            --color-9: #e67e22;
+            --color-10: #d68910;
+            
+            /* Cores de fundo */
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #c3cfe2;
+            --bg-white: white;
+            
+            /* Cores de texto */
+            --text-primary: var(--color-2);
+            --text-secondary: #2c3e50;
+            --text-light: white;
+            
+            /* Sombras */
+            --shadow-light: rgba(0,0,0,0.1);
+            --shadow-medium: rgba(0,0,0,0.15);
+            --shadow-color: rgba(102, 126, 234, 0.3);
+        }
+
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        /* Menu de navegação */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 60px 0 0 0; /* Adicionado padding-top para o menu */
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            background: var(--bg-white);
+            border-radius: 15px;
+            /* box-shadow: 0 8px 32px var(--shadow-light); */
+            padding: 15px;
+            box-sizing: border-box;
+            margin: 20px;
+            max-width: 95vw;
+            max-height: 95vh;
+            overflow: auto;
+        }
+
+        .posicao-central {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .titulo-principal {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--color-6), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .centro {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+            color: var(--text-light);
+            padding: 20px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            z-index: 10;
+        }
+
+        .centro h2 {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+        
+        .centro p {
+            margin: 5px 0 0 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .ramo {
+            position: absolute;
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 12px 15px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            border-left: 4px solid;
+            max-width: 180px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .ramo header {
+            margin-bottom: 8px;
+        }
+        
+        .ramo h3 {
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .ramo ul {
+            margin: 0;
+            padding-left: 12px;
+        }
+        
+        .ramo li {
+            margin: 3px 0;
+        }
+        
+        /* Posicionamento dos ramos */
+        .origem {
+            top: 15%;
+            left: 12%;
+            border-left-color: var(--color-3);
+            color: var(--color-3);
+        }
+        
+        .hamurabi {
+            top: 15%;
+            right: 12%;
+            border-left-color: var(--color-4);
+            color: var(--color-10);
+        }
+        
+        .imperio {
+            top: 42%;
+            left: 2%;
+            transform: translateY(-50%);
+            border-left-color: var(--color-5);
+            color: var(--color-5);
+        }
+        
+        .cultura {
+            bottom: 28%;
+            left: 5%;
+            border-left-color: var(--color-6);
+            color: var(--color-6);
+        }
+        
+        .religiao {
+            top: 42%;
+            right: 2%;
+            transform: translateY(-50%);
+            border-left-color: var(--color-7);
+            color: var(--color-7);
+        }
+        
+        .ciencia {
+            bottom: 28%;
+            right: 5%;
+            border-left-color: var(--color-9);
+            color: var(--color-10);
+        }
+        
+        .legado {
+            bottom: 5%;
+            left: 15%;
+            border-left-color: var(--color-8);
+            color: var(--color-8);
+        }
+        
+        .decadencia {
+            bottom: 5%;
+            right: 15%;
+            border-left-color: var(--color-3);
+            color: var(--color-3);
+        }
+        
+        /* Linhas conectoras */
+        .linha {
+            position: absolute;
+            background: #bdc3c7;
+            z-index: 1;
+            transform-origin: top center;
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+        }
+        
+        /* Linha para ORIGEM (topo esquerdo) */
+        .linha-1 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(148deg);
+            background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para HAMURABI (topo direito) */
+        .linha-2 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-148deg);
+            background: linear-gradient(313deg, var(--color-4) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para IMPÉRIO (esquerda) */
+        .linha-3 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(98deg);
+            background: linear-gradient(313deg, var(--color-5) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para CULTURA (baixo esquerdo) */
+        .linha-4 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-108deg);
+            background: linear-gradient(294deg, var(--color-6) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+
+        
+        /* Linha para RELIGIÃO (direita) */
+        .linha-5 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(65deg);
+            background: linear-gradient(313deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para CIÊNCIA (baixo direito) */
+        .linha-6 {
+            width: 2px;
+            height: 300px;
+            transform: rotate(-60deg);
+            background: linear-gradient(312deg, var(--color-9) 50%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para LEGADO (baixo esquerdo inferior) */
+        .linha-7 {
+            width: 2px;
+            height: 360px;
+            transform: rotate(25deg);
+            background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        /* Linha para DECADÊNCIA (baixo direito inferior) */
+        .linha-8 {
+            width: 2px;
+            height: 360px;
+            transform: rotate(-20deg);
+            background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Menu de navegação -->
+    <nav class="nav-menu" role="navigation" aria-label="Navegação entre mapas mentais">
+        <a href="Hebreus.html">🏺 Hebreus</a>
+        <a href="Sumerios.html">🏛️ Sumérios</a>
+        <a href="Acadios.html">⚔️ Acádios</a>
+        <a href="Babilonios.html" class="active" aria-current="page">🏺 Babilônios</a>
+        <a href="Assirios.html">🛡️ Assírios</a>
+    </nav>
+
+    <main class="container" role="main" aria-label="Mapa Mental do Povo Babilônio">
+        <header>
+            <h1 class="titulo-principal">POVO BABILÔNIO - Mapa Mental</h1>
+        </header>
+
+        <section class="mind-map" aria-label="Estrutura do mapa mental">
+            <!-- Centro do mapa -->
+            <article class="centro" role="banner" aria-label="Tema central">
+                <h2>POVO BABILÔNIO</h2>
+                <p>(Império)</p>
+            </article>
+            
+            <!-- Linhas conectoras -->
+            <nav class="conectores posicao-central" aria-label="Conexões do mapa mental">
+                <div class="linha linha-1" aria-hidden="true"></div>
+                <div class="linha linha-2" aria-hidden="true"></div>
+                <div class="linha linha-3" aria-hidden="true"></div>
+                <div class="linha linha-4" aria-hidden="true"></div>
+                <div class="linha linha-5" aria-hidden="true"></div>
+                <div class="linha linha-6" aria-hidden="true"></div>
+                <div class="linha linha-7" aria-hidden="true"></div>
+                <div class="linha linha-8" aria-hidden="true"></div>
+            </nav>
+            
+            <!-- Ramos do mapa mental -->
+            <section class="ramos" aria-label="Ramos do mapa mental">
+                <article class="ramo origem" role="region" aria-labelledby="origem-titulo">
+                    <header>
+                        <h3 id="origem-titulo">📍 ORIGEM</h3>
+                    </header>
+                    <ul>
+                        <li>Povo semita da Mesopotâmia</li>
+                        <li>Cidade de Babilônia (sul da Mesopotâmia)</li>
+                        <li>Surgimento após queda dos acádios</li>
+                        <li>Primeiro império: 1894-1595 a.C.</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo hamurabi" role="region" aria-labelledby="hamurabi-titulo">
+                    <header>
+                        <h3 id="hamurabi-titulo">⚖️ HAMURABI</h3>
+                    </header>
+                    <ul>
+                        <li><strong>Hamurabi:</strong> Sexto rei da dinastia</li>
+                        <li>Reinado: 1792-1750 a.C.</li>
+                        <li>Código de Hamurabi (282 leis)</li>
+                        <li>"Olho por olho, dente por dente"</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo imperio" role="region" aria-labelledby="imperio-titulo">
+                    <header>
+                        <h3 id="imperio-titulo">🏛️ IMPÉRIO</h3>
+                    </header>
+                    <ul>
+                        <li>Capital: Babilônia</li>
+                        <li>Jardins Suspensos da Babilônia</li>
+                        <li>Porta de Ishtar</li>
+                        <li>Zigurate de Etemenanki</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo cultura" role="region" aria-labelledby="cultura-titulo">
+                    <header>
+                        <h3 id="cultura-titulo">🎨 CULTURA</h3>
+                    </header>
+                    <ul>
+                        <li>Arquitetura monumental</li>
+                        <li>Arte refinada e sofisticada</li>
+                        <li>Literatura e poesia</li>
+                        <li>Influência cultural duradoura</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo religiao" role="region" aria-labelledby="religiao-titulo">
+                    <header>
+                        <h3 id="religiao-titulo">🙏 RELIGIÃO</h3>
+                    </header>
+                    <ul>
+                        <li>Panteão mesopotâmico</li>
+                        <li>Deus principal: Marduk</li>
+                        <li>Deusa Ishtar (amor e guerra)</li>
+                        <li>Templos e zigurates</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo ciencia" role="region" aria-labelledby="ciencia-titulo">
+                    <header>
+                        <h3 id="ciencia-titulo">🔬 CIÊNCIA</h3>
+                    </header>
+                    <ul>
+                        <li>Avanços em astronomia</li>
+                        <li>Sistema sexagesimal (60)</li>
+                        <li>Matemática babilônica</li>
+                        <li>Calendário lunar preciso</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo legado" role="region" aria-labelledby="legado-titulo">
+                    <header>
+                        <h3 id="legado-titulo">🌟 LEGADO</h3>
+                    </header>
+                    <ul>
+                        <li>Primeiro código de leis escrito</li>
+                        <li>Sistema jurídico organizado</li>
+                        <li>Contribuições matemáticas</li>
+                        <li>Arquitetura impressionante</li>
+                    </ul>
+                </article>
+                
+                <article class="ramo decadencia" role="region" aria-labelledby="decadencia-titulo">
+                    <header>
+                        <h3 id="decadencia-titulo">📉 DECADÊNCIA</h3>
+                    </header>
+                    <ul>
+                        <li>Invasão dos hititas (1595 a.C.)</li>
+                        <li>Domínio cassita (1595-1155 a.C.)</li>
+                        <li>Segundo império (Neo-Babilônico)</li>
+                        <li>Queda para os persas (539 a.C.)</li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <!-- Script para controle do menu de navegação -->
+    <script src="menu-toggle.js"></script>
+</body>
+</html>
