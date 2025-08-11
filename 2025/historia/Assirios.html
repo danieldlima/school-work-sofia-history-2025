@@ -35,28 +35,6 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .centro {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
-            color: var(--text-light);
-            padding: 20px;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 8px 25px var(--shadow-color);
-            z-index: 10;
-        }
 
         .centro h2 {
             margin: 0;
@@ -103,36 +81,40 @@
         
         /* Posicionamento dos ramos */
         .origem {
-            top: 15%;
+            top: 0;
             left: 12%;
             border-left-color: var(--color-3);
             color: var(--color-3);
         }
         
         .militar {
-            top: 15%;
+            top: 0;
             right: 12%;
             border-left-color: var(--color-4);
             color: var(--color-10);
         }
         
         .imperio {
-            top: 42%;
+            top: 30%;
             left: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-5);
             color: var(--color-5);
+            border-right: 4px solid;
+            border-left: 0;
         }
         
         .cultura {
-            bottom: 28%;
+            bottom: 42%;
             left: 5%;
             border-left-color: var(--color-6);
             color: var(--color-6);
+            border-right: 4px solid;
+            border-left: 0;
         }
         
         .religiao {
-            top: 42%;
+            top: 30%;
             right: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-7);
@@ -140,21 +122,21 @@
         }
         
         .arte {
-            bottom: 28%;
+            bottom: 42%;
             right: 5%;
             border-left-color: var(--color-9);
             color: var(--color-10);
         }
         
         .legado {
-            bottom: 5%;
+            bottom: 22%;
             left: 15%;
             border-left-color: var(--color-8);
             color: var(--color-8);
         }
         
         .decadencia {
-            bottom: 5%;
+            bottom: 22%;
             right: 15%;
             border-left-color: var(--color-3);
             color: var(--color-3);
@@ -196,9 +178,9 @@
         /* Linha para CULTURA (baixo esquerdo) */
         .linha-4 {
             width: 2px;
-            height: 300px;
+            height: 220px;
             transform: rotate(-108deg);
-            background: linear-gradient(294deg, var(--color-6) 30%, var(--color-1) 60%, var(--color-2) 100%);
+            background: linear-gradient(294deg, var(--color-7) 20%, var(--color-1) 60%, var(--color-2) 100%);
         }
 
         
@@ -207,7 +189,7 @@
             width: 2px;
             height: 300px;
             transform: rotate(65deg);
-            background: linear-gradient(313deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
+            background: linear-gradient(313deg, var(--color-6) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
         /* Linha para ARTE (baixo direito) */
@@ -375,6 +357,7 @@
 
     <!-- Scripts -->
     <script src="scripts/navigation-menu.js"></script>
-    <script src="scripts/unsplash-header.js"></script>
+    <script src="scripts/static-header-config.js"></script>
+    <script src="scripts/static-header.js"></script>
 </body>
 </html>

@@ -36,6 +36,12 @@
 
     /* Cores de título */
     --color-title-header: #f1f0ff;
+
+    /* Tamanhos */
+    --size-header: 110px;
+    --size-header-small: 100px;
+    --size-default: 8px;
+    --size-gap-content: 40px;
 }
 
 @page {
@@ -53,8 +59,14 @@ body {
     box-sizing: border-box;
 }
 
-/* Header com imagem do Unsplash */
-.unsplash-header {
+.mind-map {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Header com imagem estática */
+.static-header {
     position: relative;
     width: 100%;
     height: 110px;
@@ -64,36 +76,18 @@ body {
     backdrop-filter: blur(15px);
 }
 
-.unsplash-link {
-    color: white;
-    text-decoration: none;
+.header-bg--acadios {}
+
+.header-background.header-bg--assirios {
+    background-position: center 90%;
 }
 
-.unsplash-attribution {
-    bottom: 5px;
-    right: 10px;
-    padding: 3px 8px;
-    font-size: 0.7rem;
-}
+.header-bg--babilonios {}
 
-.unsplash-photographer-link {
-    color: white;
-    text-decoration: none;
-}
+.header-bg--hebreus {}
 
-.attribution-text a {
-    color: var(--color-link);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.attribution-text a:hover {
-    text-decoration: underline;
-}
-
-.unsplash-license-link {
-    color: white;
-    text-decoration: none;
+.header-background.header-bg--sumerios {
+    background-position: center 25%;
 }
 
 .header-background {
@@ -114,11 +108,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(102, 126, 234, 0.8) 0%, 
-        rgba(118, 75, 162, 0.9) 100%);
+    background: #03030378;
     z-index: 1;
-    opacity: 0.5;
 }
 
 .header-content {
@@ -140,39 +131,40 @@ body {
     letter-spacing: 24px;
 }
 
-.photo-attribution {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    z-index: 3;
-    background: rgb(255 255 255 / 13%);
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.65rem;
-    backdrop-filter: blur(15px);
-    color: white;
-    display: none;
-}
+
 
 /* Container principal */
 .container {
     width: 210mm;
-    height: auto;
-    min-height: 297mm;
+    height: 297mm;
     position: relative;
     background: var(--bg-white);
     border-radius: 15px;
     padding: 0;
     box-sizing: border-box;
-    margin: 20px auto;
+    margin: 0 auto 20px;
     max-width: 95vw;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 110px 1fr;
+    grid-template-areas:
+        "header"
+        "content";
+    gap: calc(var(--size-default) * 6);
+}
+
+.ramos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 /* Posicionamento central */
 .posicao-central {
     position: absolute;
-    top: 50%;
+    top: calc(50% - var(--size-gap-content));
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -198,7 +190,7 @@ main {
 /* Centro do mapa mental */
 .centro {
     position: absolute;
-    top: 50%;
+    top: calc(50% - var(--size-gap-content));
     left: 50%;
     transform: translate(-50%, -50%);
     background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
@@ -303,7 +295,7 @@ main {
         padding: 0;
     }
 
-    .unsplash-header {
+    .static-header {
         height: 200px;
         margin: -10px -10px 15px -10px;
     }

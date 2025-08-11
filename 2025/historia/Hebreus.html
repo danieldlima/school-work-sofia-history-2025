@@ -9,21 +9,21 @@
     <style>
         /* Posicionamento dos ramos */
         .origem {
-            top: 15%;
+            top: 0;
             left: 12%;
             border-left-color: var(--color-3);
             color: var(--color-3);
         }
         
         .patriarcas {
-            top: 15%;
+            top: 0;
             right: 12%;
             border-left-color: var(--color-4);
             color: var(--color-10);
         }
         
         .egito {
-            top: 42%;
+            top: 28%;
             left: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-5);
@@ -31,14 +31,14 @@
         }
         
         .exodo {
-            bottom: 28%;
-            left: 5%;
+            bottom: 43%;
+            left: 2%;
             border-left-color: var(--color-6);
             color: var(--color-6);
         }
         
         .terra-prometida {
-            top: 42%;
+            top: 28%;
             right: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-7);
@@ -46,22 +46,22 @@
         }
         
         .religiao {
-            bottom: 28%;
-            right: 5%;
+            bottom: 45%;
+            right: 2%;
             border-left-color: var(--color-9);
             color: var(--color-10);
         }
         
         .cultura {
-            bottom: 5%;
-            left: 15%;
+            bottom: 24%;
+            left: 12%;
             border-left-color: var(--color-8);
             color: var(--color-8);
         }
         
         .legado {
-            bottom: 5%;
-            right: 15%;
+            bottom: 24%;
+            right: 12%;
             border-left-color: var(--color-3);
             color: var(--color-3);
         }
@@ -112,14 +112,15 @@
         .linha-7 {
             width: 2px;
             height: 360px;
-            transform: rotate(25deg);
+            transform: rotate(
+22deg);
             background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
         .linha-8 {
             width: 2px;
             height: 360px;
-            transform: rotate(-20deg);
+            transform: rotate(332.5deg);
             background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
     </style>
@@ -255,6 +256,7 @@
 
     <!-- Scripts -->
     <script src="scripts/navigation-menu.js"></script>
-    <script src="scripts/unsplash-header.js"></script>
+    <script src="scripts/static-header-config.js"></script>
+    <script src="scripts/static-header.js"></script>
 </body>
 </html>

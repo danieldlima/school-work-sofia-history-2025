@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="styles/common-styles.css">
     <style>
         /* Estilos específicos para a página dos Sumérios */
-            /* box-shadow: 0 8px 32px var(--shadow-light); */
+        .container {
             padding: 15px;
             box-sizing: border-box;
-            margin: 20px;
             max-width: 95vw;
             max-height: 95vh;
-            overflow: auto;
+            overflow: hidden;
         }
 
         .posicao-central {
@@ -37,25 +36,7 @@
         }
         
         .centro {
-            position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
-            color: var(--text-light);
-            padding: 20px;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 8px 25px var(--shadow-color);
-            z-index: 10;
         }
 
         .centro h2 {
@@ -103,21 +84,21 @@
         
         /* Posicionamento dos ramos */
         .origem {
-            top: 15%;
+            top: 0;
             left: 12%;
             border-left-color: var(--color-3);
             color: var(--color-3);
         }
         
         .patrimonio {
-            top: 15%;
+            top: 0;
             right: 12%;
             border-left-color: var(--color-4);
             color: var(--color-10);
         }
         
         .economia {
-            top: 42%;
+            top: 37%;
             left: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-5);
@@ -132,7 +113,7 @@
         }
         
         .legado {
-            top: 42%;
+            top: 38%;
             right: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-7);
@@ -140,14 +121,14 @@
         }
         
         .politica {
-            bottom: 25%;
+            bottom: 24%;
             right: 2%;
             border-left-color: var(--color-9);
             color: var(--color-10);
         }
         
         .sociedade {
-            bottom: 10%;
+            bottom: 3%;
             left: 50%;
             transform: translateX(-50%);
             border-left-color: var(
@@ -168,7 +149,7 @@
         /* Linha para ORIGEM (topo esquerdo) */
         .linha-1 {
             width: 2px;
-            height: 300px;
+            height: 230px;
             transform: rotate(148deg);
             background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
@@ -176,7 +157,7 @@
         /* Linha para PATRIMÔNIO (topo direito) */
         .linha-2 {
             width: 2px;
-            height: 300px;
+            height: 230px;
             transform: rotate(-148deg);
             background: linear-gradient(313deg, var(--color-4) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
@@ -184,9 +165,9 @@
         /* Linha para ECONOMIA (esquerda) */
         .linha-3 {
             width: 2px;
-            height: 300px;
+            height: 170px;
             transform: rotate(
-113deg);
+94deg);
             background: linear-gradient(313deg, var(--color-5) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
@@ -203,16 +184,17 @@
         /* Linha para LEGADO (direita) */
         .linha-5 {
             width: 2px;
-            height: 300px;
-            transform: rotate(65deg);
+            height: 230px;
+            transform: rotate(49deg);
             background: linear-gradient(313deg, var(--color-6) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
         /* Linha para POLÍTICA (baixo direito) */
         .linha-6 {
             width: 2px;
-            height: 200px;
-            transform: rotate(-60deg);
+            height: 250px;
+            transform: rotate(
+312deg);
             background: linear-gradient(
  312deg, var(--color-9) 10%, var(--color-1) 60%, var(--color-2) 100%);
         }
@@ -220,7 +202,7 @@
         /* Linha para SOCIEDADE (baixo esquerdo inferior) */
         .linha-7 {
             width: 2px;
-            height: 260px;
+            height: 300px;
             transform: rotate(
 0deg);
             background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
@@ -349,6 +331,7 @@
 
     <!-- Scripts -->
     <script src="scripts/navigation-menu.js"></script>
-    <script src="scripts/unsplash-header.js"></script>
+    <script src="scripts/static-header-config.js"></script>
+    <script src="scripts/static-header.js"></script>
 </body>
 </html>
