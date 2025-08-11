@@ -153,6 +153,17 @@ class NavigationMenu extends HTMLElement {
         // Toggle do botão
         toggleButton.addEventListener('click', () => this.toggleMenu());
 
+        // Recolher menu ao clicar em qualquer link
+        const links = this.shadowRoot.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Recolhe o menu se estiver expandido
+                if (!this.isCollapsed) {
+                    this.toggleMenu();
+                }
+            });
+        });
+
         // Tecla ESC para recolher
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !this.isCollapsed) {
