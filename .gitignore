@@ -1,0 +1,125 @@
+# Arquivos do sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.#*
+\#*#
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependências (se houver)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Arquivos de build/distribuição
+dist/
+build/
+out/
+
+# Arquivos de configuração local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Arquivos de cache
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# Arquivos de backup
+*.bak
+*.backup
+*.old
+*.orig
+
+# Arquivos de IDE/Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+
+# Arquivos do macOS
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Arquivos do Windows
+*.lnk
+*.exe
+*.msi
+*.dll
+*.sys
+
+# Arquivos do Linux
+*~
+
+# Arquivos de teste
+coverage/
+.nyc_output/
+.coverage
+*.lcov
+
+# Arquivos de documentação temporários
+docs/_build/
+docs/.doctrees/
+
+# Arquivos de compressão
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Arquivos de imagem temporários
+*.png.tmp
+*.jpg.tmp
+*.jpeg.tmp
+*.gif.tmp
+
+# Arquivos de configuração local do projeto
+config.local.js
+settings.local.json
+
+# Arquivos de sessão
+*.session
+*.sess
+
+# Arquivos de lock de processo
+*.pid
+*.lock
+
+# Arquivos de histórico
+.history/
+.hist/
+
+# Arquivos de debug
+debug.log
+debug/
+
