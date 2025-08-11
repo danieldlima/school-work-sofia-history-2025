@@ -86,9 +86,10 @@ class NavigationButtons extends HTMLElement {
                     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
                 }
 
-
-
-
+                .nav-button:active {
+                    transform: scale(0.95);
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+                }
 
                 @media (max-width: 768px) {
                     .nav-buttons {
@@ -105,11 +106,36 @@ class NavigationButtons extends HTMLElement {
             </style>
             
             <div class="nav-buttons">
-                <a href="#" class="nav-button prev" id="prev-button" aria-label="Página anterior">
-                    ←
+                <a href="#" class="nav-button prev" id="prev-button" aria-label="Página anterior" title="Página anterior (←)">
+                    <span>
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-chevron-left-icon lucide-chevron-left"
+                        >
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                    </span>
                 </a>
-                <a href="#" class="nav-button next" id="next-button" aria-label="Próxima página">
-                    →
+                <a href="#" class="nav-button next" id="next-button" aria-label="Próxima página" title="Próxima página (→)">
+                    <span>
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-chevron-right-icon lucide-chevron-right"
+                        >
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </span>
                 </a>
             </div>
         `;
@@ -131,10 +157,13 @@ class NavigationButtons extends HTMLElement {
 
         // Navegação por teclado
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
+            // Seta esquerda ou tecla 'a' para anterior
+            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
                 e.preventDefault();
                 this.navigateToPrevious();
-            } else if (e.key === 'ArrowRight') {
+            }
+            // Seta direita ou tecla 'd' para próximo
+            else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
                 e.preventDefault();
                 this.navigateToNext();
             }
