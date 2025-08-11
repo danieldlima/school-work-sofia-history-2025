@@ -1,0 +1,224 @@
+/**
+ * Estilos comuns para todas as páginas de mapas mentais
+ * Centraliza as definições de cores, variáveis CSS e estilos base
+ */
+
+:root {
+    /* Cores principais */
+    --color-1: #667eea;
+    --color-2: #764ba2;
+    --color-3: #e74c3c;
+    --color-4: #f39c12;
+    --color-5: #9b59b6;
+    --color-6: #3498db;
+    --color-7: #27ae60;
+    --color-8: #1abc9c;
+    --color-9: #e67e22;
+    --color-10: #d68910;
+    
+    /* Cores de fundo */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #c3cfe2;
+    --bg-white: white;
+    
+    /* Cores de texto */
+    --text-primary: var(--color-2);
+    --text-secondary: #2c3e50;
+    --text-light: white;
+    
+    /* Sombras */
+    --shadow-light: rgba(0,0,0,0.1);
+    --shadow-medium: rgba(0,0,0,0.15);
+    --shadow-color: rgba(102, 126, 234, 0.3);
+}
+
+@page {
+    size: A4;
+    margin: 1cm;
+}
+
+/* Estilos base do body */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 60px 0 0 0;
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Container principal */
+.container {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    background: var(--bg-white);
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 20px;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: auto;
+}
+
+/* Posicionamento central */
+.posicao-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Título principal */
+.titulo-principal {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-2);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--color-6), var(--color-5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Centro do mapa mental */
+.centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+    color: var(--text-light);
+    padding: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    z-index: 10;
+}
+
+.centro h2 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.centro p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Ramos do mapa mental */
+.ramo {
+    position: absolute;
+    background: var(--bg-white);
+    border-radius: 15px;
+    padding: 12px 15px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border-left: 4px solid;
+    max-width: 180px;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.ramo header {
+    margin-bottom: 8px;
+}
+
+.ramo h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ramo ul {
+    margin: 0;
+    padding-left: 12px;
+}
+
+.ramo li {
+    margin: 3px 0;
+}
+
+/* Linhas conectoras */
+.linha {
+    position: absolute;
+    background: #bdc3c7;
+    z-index: 1;
+    transform-origin: top center;
+    background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+}
+
+/* Decorações */
+.decoracao {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.star1 { top: 5%; left: 5%; }
+.star2 { top: 8%; right: 5%; }
+.star3 { bottom: 5%; left: 8%; }
+.star4 { bottom: 8%; right: 8%; }
+
+/* Estilos para impressão */
+@media print {
+    body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 95vw;
+        height: auto;
+        min-height: 95vh;
+        margin: 10px;
+        padding: 10px;
+    }
+    
+    .titulo-principal {
+        font-size: 24px;
+    }
+    
+    .centro {
+        width: 100px;
+        height: 100px;
+        padding: 15px;
+    }
+    
+    .centro h2 {
+        font-size: 14px;
+    }
+    
+    .centro p {
+        font-size: 10px;
+    }
+    
+    .ramo {
+        max-width: 150px;
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+    
+    .ramo h3 {
+        font-size: 12px;
+    }
+}

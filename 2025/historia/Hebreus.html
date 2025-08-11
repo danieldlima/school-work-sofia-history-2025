@@ -5,192 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Mental - Povo Hebreu</title>
+    <link rel="stylesheet" href="styles/common-styles.css">
     <style>
-
-        :root {
-            /* Cores principais */
-            --color-1: #667eea;
-            --color-2: #764ba2;
-            --color-3: #e74c3c;
-            --color-4: #f39c12;
-            --color-5: #9b59b6;
-            --color-6: #3498db;
-            --color-7: #27ae60;
-            --color-8: #1abc9c;
-            --color-9: #e67e22;
-            --color-10: #d68910;
-            
-            /* Cores de fundo */
-            --bg-primary: #f5f7fa;
-            --bg-secondary: #c3cfe2;
-            --bg-white: white;
-            
-            /* Cores de texto */
-            --text-primary: var(--color-2);
-            --text-secondary: #2c3e50;
-            --text-light: white;
-            
-            /* Sombras */
-            --shadow-light: rgba(0,0,0,0.1);
-            --shadow-medium: rgba(0,0,0,0.15);
-            --shadow-color: rgba(102, 126, 234, 0.3);
-        }
-
-        @page {
-            size: A4;
-            margin: 1cm;
-        }
-
-        /* Menu de navegação */
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
-            padding: 10px 20px;
-            box-shadow: 0 2px 10px var(--shadow-light);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .nav-menu a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .nav-menu a.active {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            font-weight: bold;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 60px 0 0 0; /* Adicionado padding-top para o menu */
-            background: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-        
-        .container {
-            width: 210mm;
-            height: 297mm;
-            position: relative;
-            background: var(--bg-white);
-            border-radius: 15px;
-            /* box-shadow: 0 8px 32px var(--shadow-light); */
-            padding: 15px;
-            box-sizing: border-box;
-            margin: 20px;
-            max-width: 95vw;
-            max-height: 95vh;
-            overflow: auto;
-        }
-
-        .posicao-central {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .titulo-principal {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--color-2);
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--color-6), var(--color-5));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .centro {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
-            color: var(--text-light);
-            padding: 20px;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 8px 25px var(--shadow-color);
-            z-index: 10;
-        }
-
-        .centro h2 {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.2;
-        }
-        
-        .centro p {
-            margin: 5px 0 0 0;
-            font-size: 12px;
-            opacity: 0.9;
-        }
-        
-        .ramo {
-            position: absolute;
-            background: var(--bg-white);
-            border-radius: 15px;
-            padding: 12px 15px;
-            box-shadow: 0 4px 15px var(--shadow-light);
-            border-left: 4px solid;
-            max-width: 180px;
-            font-size: 11px;
-            line-height: 1.4;
-        }
-        
-        .ramo header {
-            margin-bottom: 8px;
-        }
-        
-        .ramo h3 {
-            margin: 0;
-            font-size: 13px;
-            font-weight: bold;
-        }
-        
-        .ramo ul {
-            margin: 0;
-            padding-left: 12px;
-        }
-        
-        .ramo li {
-            margin: 3px 0;
-        }
-        
         /* Posicionamento dos ramos */
         .origem {
             top: 15%;
@@ -250,16 +66,7 @@
             color: var(--color-3);
         }
         
-        /* Linhas conectoras */
-        .linha {
-            position: absolute;
-            background: #bdc3c7;
-            z-index: 1;
-            transform-origin: top center;
-            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
-        }
-        
-        /* Linha para ORIGEM (topo esquerdo) */
+        /* Linhas conectoras específicas */
         .linha-1 {
             width: 2px;
             height: 300px;
@@ -267,7 +74,6 @@
             background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para PATRIARCAS (topo direito) */
         .linha-2 {
             width: 2px;
             height: 300px;
@@ -275,7 +81,6 @@
             background: linear-gradient(313deg, var(--color-4) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para EGITO (esquerda) */
         .linha-3 {
             width: 2px;
             height: 300px;
@@ -283,17 +88,13 @@
             background: linear-gradient(313deg, var(--color-5) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para ÊXODO (baixo esquerdo) */
         .linha-4 {
             width: 2px;
             height: 300px;
             transform: rotate(-108deg);
-            background: linear-gradient(
-294deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
+            background: linear-gradient(294deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-
         
-        /* Linha para TERRA PROMETIDA (direita) */
         .linha-5 {
             width: 2px;
             height: 300px;
@@ -301,16 +102,13 @@
             background: linear-gradient(313deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para RELIGIÃO (baixo direito) */
         .linha-6 {
             width: 2px;
             height: 300px;
             transform: rotate(-60deg);
-            background: linear-gradient(
-312deg, var(--color-9) 50%, var(--color-1) 60%, var(--color-2) 100%);
+            background: linear-gradient(312deg, var(--color-9) 50%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para CULTURA (baixo esquerdo inferior) */
         .linha-7 {
             width: 2px;
             height: 360px;
@@ -318,45 +116,17 @@
             background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
         
-        /* Linha para LEGADO (baixo direito inferior) */
         .linha-8 {
             width: 2px;
             height: 360px;
             transform: rotate(-20deg);
             background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
-        .decoracao {
-            position: absolute;
-            font-size: 20px;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .star1 { top: 5%; left: 5%; }
-        .star2 { top: 8%; right: 5%; }
-        .star3 { bottom: 5%; left: 8%; }
-        .star4 { bottom: 8%; right: 8%; }
-        
-        @media print {
-            body {
-                background: white;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
     </style>
-
 </head>
 <body>
-    <!-- Menu de navegação -->
-    <nav class="nav-menu" role="navigation" aria-label="Navegação entre mapas mentais">
-        <a href="Hebreus.html" class="active" aria-current="page">🏺 Hebreus</a>
-        <a href="Sumerios.html">🏛️ Sumérios</a>
-        <a href="Acadios.html">⚔️ Acádios</a>
-        <a href="Babilonios.html">🏺 Babilônios</a>
-        <a href="Assirios.html">🛡️ Assírios</a>
-    </nav>
+    <!-- Menu de navegação usando web component -->
+    <navigation-menu current-page="hebreus"></navigation-menu>
 
     <main class="container" role="main" aria-label="Mapa Mental do Povo Hebreu">
         <header>
@@ -483,7 +253,7 @@
         </section>
     </main>
 
-    <!-- Script para controle do menu de navegação -->
-    <script src="menu-toggle.js"></script>
+    <!-- Scripts -->
+    <script src="scripts/navigation-menu.js"></script>
 </body>
 </html>
