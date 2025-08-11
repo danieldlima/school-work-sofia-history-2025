@@ -60,6 +60,7 @@ class NavigationMenu extends HTMLElement {
 
                 .nav-menu.collapsed {
                     transform: translateY(-100%);
+                    opacity: 0;
                 }
 
                 .nav-menu a {

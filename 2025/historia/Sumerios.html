@@ -8,21 +8,17 @@
     <link rel="stylesheet" href="styles/common-styles.css">
     <style>
         /* Estilos específicos para a página dos Sumérios */
-        .container {
-            padding: 15px;
-            box-sizing: border-box;
-            max-width: 95vw;
-            max-height: 95vh;
-            overflow: hidden;
-        }
-
         .posicao-central {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        
+
+        .conectores.posicao-central {
+            top: calc(50% - var(--size-gap-content));
+        }
+
         .titulo-principal {
             text-align: center;
             font-size: 28px;
@@ -34,23 +30,19 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .centro {
-            top: 50%;
-        }
 
         .centro h2 {
             margin: 0;
             font-size: 16px;
             line-height: 1.2;
         }
-        
+
         .centro p {
             margin: 5px 0 0 0;
             font-size: 12px;
             opacity: 0.9;
         }
-        
+
         .ramo {
             position: absolute;
             background: var(--bg-white);
@@ -62,26 +54,26 @@
             font-size: 11px;
             line-height: 1.4;
         }
-        
+
         .ramo header {
             margin-bottom: 8px;
         }
-        
+
         .ramo h3 {
             margin: 0;
             font-size: 13px;
             font-weight: bold;
         }
-        
+
         .ramo ul {
             margin: 0;
             padding-left: 12px;
         }
-        
+
         .ramo li {
             margin: 3px 0;
         }
-        
+
         /* Posicionamento dos ramos */
         .origem {
             top: 0;
@@ -89,46 +81,46 @@
             border-left-color: var(--color-3);
             color: var(--color-3);
         }
-        
+
         .patrimonio {
             top: 0;
             right: 12%;
             border-left-color: var(--color-4);
             color: var(--color-10);
         }
-        
+
         .economia {
-            top: 37%;
+            top: 30%;
             left: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-5);
             color: var(--color-5);
         }
-        
+
         .religiao {
-            bottom: 22%;
+            bottom: 40%;
             left: 2%;
             border-left-color: var(--color-6);
             color: var(--color-6);
         }
-        
+
         .legado {
-            top: 38%;
+            top: 32%;
             right: 2%;
             transform: translateY(-50%);
             border-left-color: var(--color-7);
             color: var(--color-7);
         }
-        
+
         .politica {
-            bottom: 24%;
+            bottom: 40%;
             right: 2%;
             border-left-color: var(--color-9);
             color: var(--color-10);
         }
-        
+
         .sociedade {
-            bottom: 3%;
+            bottom: 24%;
             left: 50%;
             transform: translateX(-50%);
             border-left-color: var(
@@ -136,7 +128,7 @@
             color: var(
             --color-8);
         }
-        
+
         /* Linhas conectoras */
         .linha {
             position: absolute;
@@ -145,32 +137,32 @@
             transform-origin: top center;
             background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
         }
-        
+
         /* Linha para ORIGEM (topo esquerdo) */
         .linha-1 {
             width: 2px;
-            height: 230px;
+            height: 300px;
             transform: rotate(148deg);
             background: linear-gradient(313deg, var(--color-3) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         /* Linha para PATRIMÔNIO (topo direito) */
         .linha-2 {
             width: 2px;
-            height: 230px;
+            height: 300px;
             transform: rotate(-148deg);
             background: linear-gradient(313deg, var(--color-4) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         /* Linha para ECONOMIA (esquerda) */
         .linha-3 {
             width: 2px;
-            height: 170px;
+            height: 200px;
             transform: rotate(
-94deg);
+114deg);
             background: linear-gradient(313deg, var(--color-5) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         /* Linha para RELIGIÃO (baixo esquerdo) */
         .linha-4 {
             width: 2px;
@@ -180,7 +172,7 @@
  294deg, var(--color-7) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
 
-        
+
         /* Linha para LEGADO (direita) */
         .linha-5 {
             width: 2px;
@@ -188,7 +180,7 @@
             transform: rotate(49deg);
             background: linear-gradient(313deg, var(--color-6) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         /* Linha para POLÍTICA (baixo direito) */
         .linha-6 {
             width: 2px;
@@ -198,7 +190,7 @@
             background: linear-gradient(
  312deg, var(--color-9) 10%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         /* Linha para SOCIEDADE (baixo esquerdo inferior) */
         .linha-7 {
             width: 2px;
@@ -207,7 +199,7 @@
 0deg);
             background: linear-gradient(313deg, var(--color-8) 30%, var(--color-1) 60%, var(--color-2) 100%);
         }
-        
+
         @media print {
             body {
                 background: white;

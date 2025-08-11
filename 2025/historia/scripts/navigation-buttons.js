@@ -86,17 +86,7 @@ class NavigationButtons extends HTMLElement {
                     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
                 }
 
-                .nav-button:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                    transform: none;
-                }
 
-                .nav-button:disabled:hover {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    transform: none;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                }
 
 
 
@@ -157,13 +147,19 @@ class NavigationButtons extends HTMLElement {
 
     getPreviousPage() {
         const currentIndex = this.getCurrentPageIndex();
-        if (currentIndex <= 0) return null;
+        if (currentIndex <= 0) {
+            // Se for o primeiro item, vai para o último
+            return this.navigationOrder[this.navigationOrder.length - 1];
+        }
         return this.navigationOrder[currentIndex - 1];
     }
 
     getNextPage() {
         const currentIndex = this.getCurrentPageIndex();
-        if (currentIndex >= this.navigationOrder.length - 1) return null;
+        if (currentIndex >= this.navigationOrder.length - 1) {
+            // Se for o último item, vai para o primeiro
+            return this.navigationOrder[0];
+        }
         return this.navigationOrder[currentIndex + 1];
     }
 
@@ -189,24 +185,14 @@ class NavigationButtons extends HTMLElement {
         const nextPage = this.getNextPage();
 
         // Atualiza botão anterior
-        if (prevPage) {
-            prevButton.href = prevPage.file;
-            prevButton.removeAttribute('disabled');
-            prevButton.setAttribute('aria-label', `Página anterior: ${prevPage.title}`);
-        } else {
-            prevButton.setAttribute('disabled', '');
-            prevButton.setAttribute('aria-label', 'Não há página anterior');
-        }
+        prevButton.href = prevPage.file;
+        prevButton.removeAttribute('disabled');
+        prevButton.setAttribute('aria-label', `Página anterior: ${prevPage.title}`);
 
         // Atualiza botão próximo
-        if (nextPage) {
-            nextButton.href = nextPage.file;
-            nextButton.removeAttribute('disabled');
-            nextButton.setAttribute('aria-label', `Próxima página: ${nextPage.title}`);
-        } else {
-            nextButton.setAttribute('disabled', '');
-            nextButton.setAttribute('aria-label', 'Não há próxima página');
-        }
+        nextButton.href = nextPage.file;
+        nextButton.removeAttribute('disabled');
+        nextButton.setAttribute('aria-label', `Próxima página: ${nextPage.title}`);
     }
 }
 
