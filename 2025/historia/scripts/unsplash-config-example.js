@@ -21,7 +21,19 @@ window.UNSPLASH_SEARCH_TERMS = {
     'acadios': 'ancient akkadian empire mesopotamia',
     'babilonios': 'babylon ancient city hanging gardens',
     'assirios': 'assyrian empire ancient mesopotamia',
-    'demo': 'ancient civilization history education'
+    'demo': 'ancient civilization history education',
+    'test': 'ancient civilization test'
+};
+
+// Títulos de exibição para cada página
+window.UNSPLASH_DISPLAY_TITLES = {
+    'hebreus': 'POVO HEBREU',
+    'sumerios': 'POVO SUMÉRIO',
+    'acadios': 'POVO ACÁDIO',
+    'babilonios': 'POVO BABILÔNIO',
+    'assirios': 'POVO ASSÍRIO',
+    'demo': 'DEMO - HEADER UNSplash',
+    'test': 'TESTE - HEADER CORRIGIDO'
 };
 
 // Configurações adicionais

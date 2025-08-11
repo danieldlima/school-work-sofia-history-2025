@@ -25,28 +25,63 @@ class UnsplashHeader {
             header.className = 'unsplash-header';
             header.innerHTML = `
                 <div class="header-background"></div>
+                <div class="header-overlay"></div>
                 <div class="header-content">
                     <h1 class="header-title"></h1>
-                    <div class="header-overlay"></div>
                 </div>
                 <div class="photo-attribution">
-                    <span class="attribution-text">Foto por <a href="#" class="photographer-link" target="_blank" rel="noopener">Fotógrafo</a> no <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span>
+                    <span class="attribution-text">
+                        Foto por 
+                            <a href="#" target="_blank" rel="noopener" title="Fotógrafo" class="unsplash-photographer-link">
+                                Fotógrafo
+                            </a> 
+                        no 
+                        <a href="https://unsplash.com" target="_blank" rel="noopener" class="unsplash-link">
+                            Unsplash
+                        </a>
+                    </span>
+                    <span class="attribution-text">
+                        <a href="https://unsplash.com/license" target="_blank" rel="noopener" class="unsplash-license-link">
+                            Licença
+                        </a>
+                    </span>
                 </div>
             `;
             
-            // Insere o header no início do body, após o menu de navegação
-            const navMenu = document.querySelector('navigation-menu');
-            if (navMenu) {
-                navMenu.parentNode.insertBefore(header, navMenu.nextSibling);
+            // Insere o header dentro do container principal
+            const container = document.querySelector('.container');
+            if (container) {
+                // Insere o header no início do container
+                container.insertBefore(header, container.firstChild);
             } else {
-                document.body.insertBefore(header, document.body.firstChild);
+                // Fallback: insere no body se não encontrar o container
+                const navMenu = document.querySelector('navigation-menu');
+                if (navMenu) {
+                    navMenu.parentNode.insertBefore(header, navMenu.nextSibling);
+                } else {
+                    document.body.insertBefore(header, document.body.firstChild);
+                }
             }
         }
 
         // Atualiza o título do header
         const titleElement = header.querySelector('.header-title');
-        const pageTitle = this.getPageTitle();
+        const pageTitle = this.getPageDisplayTitle();
         titleElement.textContent = pageTitle;
+        
+        // Remove o header duplicado se existir
+        this.removeDuplicateHeader();
+    }
+    
+    removeDuplicateHeader() {
+        // Remove o header com título principal duplicado
+        const container = document.querySelector('.container');
+        if (container) {
+            const duplicateHeader = container.querySelector('header:not(.unsplash-header)');
+            if (duplicateHeader) {
+                duplicateHeader.remove();
+            }
+        }
     }
 
     getPageTitle() {
@@ -57,12 +92,29 @@ class UnsplashHeader {
             'acadios': 'ancient akkadian empire mesopotamia',
             'babilonios': 'babylon ancient city hanging gardens',
             'assirios': 'assyrian empire ancient mesopotamia',
-            'demo': 'ancient civilization history education'
+            'demo': 'ancient civilization history education',
+            'test': 'ancient civilization test'
         };
 
         // Detecta a página atual baseada no URL ou atributo do menu
         const currentPage = this.getCurrentPage();
         return searchTerms[currentPage] || 'ancient civilization history';
+    }
+    
+    getPageDisplayTitle() {
+        // Usa títulos de exibição externos se disponíveis, senão usa valores padrão
+        const displayTitles = window.UNSPLASH_DISPLAY_TITLES || {
+            'hebreus': 'POVO HEBREU',
+            'sumerios': 'POVO SUMÉRIO',
+            'acadios': 'POVO ACÁDIO',
+            'babilonios': 'POVO BABILÔNIO',
+            'assirios': 'POVO ASSÍRIO',
+            'demo': 'DEMO - HEADER UNSplash',
+            'test': 'TESTE - HEADER CORRIGIDO'
+        };
+
+        const currentPage = this.getCurrentPage();
+        return displayTitles[currentPage] || 'CIVILIZAÇÃO ANTIGA';
     }
 
     getCurrentPage() {
